@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ai-lens
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+server:
+  port: 8080
+ai:
+  azure:
+    openai:
+      endpoint: ${AZURE_OPENAI_ENDPOINT:placeholder}
+      api-key: ${AZURE_OPENAI_KEY:placeholder}
+      deployment: gpt-4o
+    model-catalog:
+      endpoint: ${AZURE_CATALOG_ENDPOINT:placeholder}
+      api-key: ${AZURE_CATALOG_KEY:placeholder}
+  gemini:
+    api-key: ${GEMINI_API_KEY:placeholder}
+  ollama:
+    base-url: http://localhost:11434
+    model: llava
+
+logging:
+  level:
+    com.ailens: DEBUG
